@@ -39,9 +39,9 @@ public class Layer {
     ArrayList<TilesetG> tileSets;
     
     /**
-     *
+     * 
      * @param tiles
-     * @param tileSet
+     * @param tileSet The first tileset to add. It is necessary for the first one, or else it will return a NullPointer for the tile.
      */
     public Layer(int[][] tiles, TileSet tileSet) {
         this.tiles = tiles;
@@ -53,5 +53,11 @@ public class Layer {
     public void addTileSet (TileSet tileSet) {
         TilesetG g = new TilesetG(tileSet, 0);
         tileSets.add(g);
+    }
+    
+    public Tile getTileAt (int x, int y) {
+        //Get the tile id that is in the x y pos.
+        int ID = tiles [x][y];
+        
     }
 }
