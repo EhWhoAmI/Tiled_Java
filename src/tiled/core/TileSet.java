@@ -49,28 +49,10 @@ class TileSet {
         return tiles.size();
     }
     
-    public static class TilesetG extends TileSet{
-        int startgid;
-        public TilesetG(ArrayList<Tile> tiles, String originPath, Dimension tileSize, int gid) {
-            super(tiles, originPath, tileSize);
-            this.startgid = gid;
-        }
-        
-        public TilesetG(TileSet tileSet, int gid) {
-            super(tileSet);
-            this.startgid = gid;
-        }
-        
-        public Tile getTile (int gid) {
-            return tiles.get(gid - startgid);
-        }
-        
-        public int getStartGid() {
-            return startgid;
-        }
-        
-        public TileSet toTileset() {
-            return (TileSet) this;
+    public void append (TileSet append) {
+        for (Tile toadd : append.tiles) {
+            toadd.setOrigin(this);
+            addTile(toadd);
         }
     }
 }

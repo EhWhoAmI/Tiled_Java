@@ -23,31 +23,25 @@
  */
 package tiled.core;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Zyun
  */
-public class Layer {
-    int [][] tiles;
-    
-    TileSet thisTileSet;
-    /**
-     * 
-     * @param tiles
-     * @param tileSet The first tileset to add. It is necessary for the first one, or else it will return a NullPointer for the tile.
-     */
-    public Layer(int[][] tiles, TileSet tileSet) {
-        this.tiles = tiles;
-        thisTileSet = tileSet;
+public class Map {
+    ArrayList<Layer> list;
+
+    public Map(Layer first) {
+        list = new ArrayList<>();
+        list.add(first);
     }
     
-    public void addTileSet (TileSet tileSet) {
-        thisTileSet.append(tileSet);
+    public void addLayer (Layer toAdd) {
+        list.add(toAdd);
     }
     
-    public Tile getTileAt (int x, int y) {
-        //Get the tile id that is in the x y pos.
-        int ID = tiles [x][y];
-        
+    public Layer getLayer (int index) {
+        return (list.get(index));
     }
 }
