@@ -176,7 +176,7 @@ public class TMXMapReader {
             return def;
         }
     }
-
+    @SuppressWarnings("unchecked")
     private <T> T unmarshalClass(Class<T> clazz, Node node) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(clazz);
         Unmarshaller unmarshaller = context.createUnmarshaller();
@@ -262,7 +262,13 @@ public class TMXMapReader {
 
         return set;
     }
-
+    
+    /**
+     * Reads a tileset from node <code>t</code>
+     * @param t
+     * @return
+     * @throws Exception 
+     */
     private TileSet unmarshalTileset(Node t) throws Exception {
         String source = getAttributeValue(t, "source");
         String basedir = getAttributeValue(t, "basedir");
@@ -343,6 +349,7 @@ public class TMXMapReader {
 
                         // FIXME: importTileBitmap does not fully support URLs
                         String sourcePath = imgSource;
+                        System.out.println("Sourcepath = " + sourcePath);
                         if (!new File(imgSource).isAbsolute()) {
                             sourcePath = tilesetBaseDir + imgSource;
                         }
