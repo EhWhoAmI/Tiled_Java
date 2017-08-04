@@ -349,7 +349,6 @@ public class TMXMapReader {
 
                         // FIXME: importTileBitmap does not fully support URLs
                         String sourcePath = imgSource;
-                        System.out.println("Sourcepath = " + sourcePath);
                         if (!new File(imgSource).isAbsolute()) {
                             sourcePath = tilesetBaseDir + imgSource;
                         }
